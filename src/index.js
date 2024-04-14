@@ -3,6 +3,7 @@ import { engine } from 'express-handlebars'
 import path from 'path'
 import bodyParser from 'body-parser'
 import config from './config'
+import router from './routes/index.routes'
 const app = express()
 
 app.set('views', path.dirname(__dirname, 'views'))
@@ -12,10 +13,11 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(router)
 
 app.engine('.hbs', engine({
     defaultLayout : 'main',
-    extname : 'hbs'
+    extname : '.hbs'
 }))
 
 app.set('view engine', '.hbs')
