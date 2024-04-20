@@ -16,4 +16,12 @@ const indexController = {}
 
     }
 
+    indexController.registro = (req, res) => {
+        
+        res.render('registro', {
+            title :'Página registro'
+        })
+
+    }
+
     export default indexController
