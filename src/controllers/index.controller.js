@@ -1,3 +1,5 @@
+import { getConnection } from "../models/connection"
+
 const indexController = {}
 
     indexController.index = (req, res) => {
@@ -22,6 +24,22 @@ const indexController = {}
             title :'Página registro'
         })
 
+    }
+
+    //controlador traer datos sql vista
+    
+    indexController.listarPersonas = async (req, res)=>{
+        try {
+            const con = await getConnection()
+            const resultado = await con.request().query('select * from tbl_Clientes')
+            res.render('listarc',{
+                title : 'Pg Clientes',
+                data : resultado.recordset
+            })
+                
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     export default indexController

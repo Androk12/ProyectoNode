@@ -10,4 +10,6 @@ router.get('/login', indexController.login)
 
 router.get('/registro', indexController.registro)
 
+router.get('/listarc', indexController.listarPersonas)
+
 export default router
