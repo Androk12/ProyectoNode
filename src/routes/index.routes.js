@@ -12,4 +12,6 @@ router.get('/registro', indexController.registro)
 
 router.get('/listarc', indexController.listarPersonas)
 
+router.post('/guardarPersonas', indexController.guardarPersonas)
+
 export default router

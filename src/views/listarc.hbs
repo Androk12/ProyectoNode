@@ -1,6 +1,26 @@
 <h1>listado de personas </h1>
 
-<a href="/">inicio</a>
-<a href="/login">login</a>
-<a href="/registro">Registro</a>
-<a href="/listarc">Clientes</a>
+{{>btnInsertar}}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Correo</th>
+      <th scope="col">Contraseña</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data}}
+    <tr>
+      <th>{{id}}</th>
+      <td>{{nombre}}</td>
+      <td>{{correo}}</td>
+      <td>{{contrasena}}</td>
+      <td><button class="btn btn-primary">Eliminar</button></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
