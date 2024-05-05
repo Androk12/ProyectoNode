@@ -8,6 +8,10 @@ router.get('/', indexController.index)
 
 router.get('/login', indexController.login)
 
+router.get('/logout', indexController.logout)
+
+router.post('/submitlogin', indexController.submitLogin)
+
 router.get('/registro', indexController.registro)
 
 router.get('/listarc', indexController.listarPersonas)
