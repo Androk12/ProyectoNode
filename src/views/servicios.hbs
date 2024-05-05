@@ -1,0 +1,21 @@
+{{>header}}
+
+<div class="container">
+    <h1>Nuestros Servicios</h1>
+    <div class="row">
+        {{#each servicios}}
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/servicios/{{this.id}}">{{this.nombre}}</h5>
+                    <p class="card-text">{{this.descripcion}}</p>
+                    <p class="card-text">Precio: {{this.precio}}</p>
+                    <a href="#" class="btn btn-primary">Contratar</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+{{>footer}}

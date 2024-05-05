@@ -1,7 +1,7 @@
 {
   "name": "proyectonode",
   "version": "1.0.0",
-  "description": "",
+  "description": "Librerias\r npm i express express-handlebars dotenv mssql body-parser -D",
   "main": "index.js",
   "scripts": {
     "app": "nodemon src/index.js --exec babel-node"

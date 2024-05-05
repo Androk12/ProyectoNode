@@ -1,0 +1,69 @@
+body {
+    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #000; 
+    color: #fff; 
+    font-family: Arial, Helvetica, sans-serif; 
+}
+
+
+.navbar {
+   
+    background-color: #000; 
+    color: #fff; 
+    padding: 10px;
+}
+
+.navbar a {
+    color: #eee7e7; 
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+
+.athlete-image {
+    width: 100%;
+    max-width: 800px; 
+    display: block;
+    margin: 0 auto;
+}
+
+
+.search-button {
+    background-color: #fff; 
+    color: #000; 
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.jumbotron h1.display-4,
+.jumbotron p.lead {
+    color: black;
+}
+
+.col-md-6 h2,
+.col-md-6 p {
+    color: rgb(247, 240, 240);
+}
+
+body {
+    background-image: url('img/man-2604.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-attachment: fixed; 
+}
+
+.section {
+    --opacidad-negro: 0.5;
+    background-image: linear-gradient(rgba(0, 0, 0, var(--opacidad-negro)), rgba(0, 0, 0, var(--opacidad-negro))), url("img/fondo.jpg");
+}
+
+.image-effect {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.image-effect:hover {
+    transform: scale(0.95);
+    filter: brightness(0.8);
+}

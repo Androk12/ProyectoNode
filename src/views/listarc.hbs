@@ -1,6 +1,34 @@
-<h1>listado de personas </h1>
+{{>header}}
+{{>banner}}
+<div class="container">
+    <h1>Listado de Personas</h1>
 
-<a href="/">inicio</a>
-<a href="/login">login</a>
-<a href="/registro">Registro</a>
-<a href="/listarc">Clientes</a>
+    <a href="/">Inicio</a>
+    <a href="/login">Iniciar Sesión</a>
+    <a href="/registro">Registro</a>
+    <a href="/listarc">Clientes</a>
+
+    <div class="row mt-4">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Correo Electrónico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each data}}
+                    <tr>
+                        <td>{{this.ID}}</td>
+                        <td>{{this.nombre}}</td>
+                        <td>{{this.correo}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{{>footer}}
