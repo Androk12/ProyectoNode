@@ -6,13 +6,16 @@ const indexController = {}
     localStorage = new LocalStorage('./scratch');
 
     indexController.index = (req, res) => {
-        const nombreCliente = localStorage.getItem('tienda_cliente')
+        const logged = isLogged();
+        const nombreCliente = (logged) ? localStorage.getItem('tienda_cliente') : null;
         res.render('index', {
             title :'Página Principal',
             data: {
                 cliente: {
                     nombre: (nombreCliente) ? nombreCliente : null
-                }
+                },
+                noLogged: !logged,
+                isLogged: logged,
             }
         })
 
@@ -20,9 +23,14 @@ const indexController = {}
 
     indexController.login = async (req, res) => {
         res.render('login', {
-            title :'Página Login'
+            title :'Página Login',
         })
 
+    }
+
+    function isLogged() {
+        const isLogged = localStorage.getItem("isLogged");
+        return (isLogged != null);
     }
 
     indexController.logout = async (req, res) => {
@@ -43,6 +51,7 @@ const indexController = {}
         if (isLogged) {
             // setea el nombre en la sesión del navegador
             localStorage.setItem('tienda_cliente', cliente.email);
+            localStorage.setItem("isLogged", true);
             res.redirect('/');
         }
     }
@@ -53,6 +62,24 @@ const indexController = {}
             title :'Página registro'
         })
 
+    }
+
+    indexController.crearCuenta = (req, res) => {
+        const nuevoCliente = req.body;
+        const created = crearNuevoCliente(nuevoCliente);
+
+        if (created) {
+            localStorage.setItem('tienda_cliente', nuevoCliente.email);
+            localStorage.setItem("isLogged", true);
+            res.redirect("/");
+        } else {
+            // mensaje de que no pudo crearse la cuenta
+        }
+    }
+
+    function crearNuevoCliente(nuevoCliente) {
+        //enviarselo a la base de datos
+        return true;
     }
 
     //controlador traer datos sql vista

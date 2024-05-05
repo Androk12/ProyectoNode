@@ -19,11 +19,12 @@
       <!-- Aquí colocarías el código para el banner, como imágenes, texto, etc. -->
       <img src="" alt="Banner">
     </div>
-
+    {{#if data.noLogged }}
     <div class="container">
       <h2>Iniciar sesión</h2>
       <form action="/login" method="post">        
       </form>
       <p>¿No tienes una cuenta? <a href="/registro">Crear cuenta</a></p>
     </div>
+    {{/if}}
   </main>
