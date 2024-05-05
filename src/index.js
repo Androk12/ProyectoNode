@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(router)
 
 app.engine('.hbs', engine({
     defaultLayout : 'main',
@@ -21,7 +20,7 @@ app.engine('.hbs', engine({
 }))
 
 app.set('view engine', '.hbs')
-
+app.use(router)
 app.listen(config.port, ()=> {
 
     console.log("Estamos corriendo el servidor a traves del puerto 8081")

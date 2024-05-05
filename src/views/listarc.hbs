@@ -3,6 +3,7 @@
 <div class="container">
     <h1>Listado de Personas</h1>
 
+<<<<<<< HEAD
     <a href="/">Inicio</a>
     <a href="/login">Iniciar Sesión</a>
     <a href="/registro">Registro</a>
@@ -32,3 +33,29 @@
     </div>
 </div>
 {{>footer}}
+=======
+{{>btnInsertar}}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Correo</th>
+      <th scope="col">Contraseña</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data}}
+    <tr>
+      <th>{{id}}</th>
+      <td>{{nombre}}</td>
+      <td>{{correo}}</td>
+      <td>{{contrasena}}</td>
+      <td><button class="btn btn-primary">Eliminar</button></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+>>>>>>> 65a3a2111b5832747c41b16133e9f36283a3aa8f
