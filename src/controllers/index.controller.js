@@ -64,45 +64,6 @@ const indexController = {}
 
     }
 
-<<<<<<< HEAD
-    indexController.carrito = (req, res) => {
-        
-        res.render('carrito', {
-            title :'pedidos'
-        })
-
-    }
-
-    indexController.productos = (req, res) => {
-        
-        res.render('productos', {
-            title :'Explorar productos'
-        })
-
-    }
-
-    indexController.productos2 = (req, res) => {
-        
-        res.render('productosmujer', {
-            title :'Mujer'
-        })
-
-    }
-    indexController.productos3 = (req, res) => {
-        
-        res.render('productoshom', {
-            title :'Hombre'
-        })
-
-    }
-
-    indexController.productos4 = (req, res) => {
-        
-        res.render('productosnino', {
-            title :'ninos'
-        })
-
-=======
     indexController.crearCuenta = (req, res) => {
         const nuevoCliente = req.body;
         const created = crearNuevoCliente(nuevoCliente);
@@ -119,7 +80,6 @@ const indexController = {}
     function crearNuevoCliente(nuevoCliente) {
         //enviarselo a la base de datos
         return true;
->>>>>>> 65a3a2111b5832747c41b16133e9f36283a3aa8f
     }
 
     //controlador traer datos sql vista
@@ -127,12 +87,7 @@ const indexController = {}
     indexController.listarPersonas = async (req, res)=>{
         try {
             const con = await getConnection()
-<<<<<<< HEAD
-            console.log("conexion exitosa(db)")
-            const resultado = await con.request().query('select * from tbl_Clientes')
-=======
             const resultado = await con.request().query('select * from Clientes')
->>>>>>> 65a3a2111b5832747c41b16133e9f36283a3aa8f
             res.render('listarc',{
                 title : 'Pg Clientes',
                 data : resultado.recordset
@@ -143,9 +98,6 @@ const indexController = {}
         }
     }
 
-<<<<<<< HEAD
-    
-=======
     indexController.guardarPersonas = async (req, res)=>{
         try {
             const con = await getConnection()
@@ -217,6 +169,5 @@ const indexController = {}
         }
     }
 
->>>>>>> 65a3a2111b5832747c41b16133e9f36283a3aa8f
 
     export default indexController
