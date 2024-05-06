@@ -64,6 +64,44 @@ const indexController = {}
 
     }
 
+    indexController.carrito = (req, res) => {
+        
+        res.render('carrito', {
+            title :'pedidos'
+        })
+
+    }
+
+    indexController.productos = (req, res) => {
+        
+        res.render('productos', {
+            title :'Explorar productos'
+        })
+
+    }
+
+    indexController.productos2 = (req, res) => {
+        
+        res.render('productosmujer', {
+            title :'Mujer'
+        })
+
+    }
+    indexController.productos3 = (req, res) => {
+        
+        res.render('productoshom', {
+            title :'Hombre'
+        })
+
+    }
+
+    indexController.productos4 = (req, res) => {
+        
+        res.render('productosnino', {
+            title :'ninos'
+        })
+    }
+    
     indexController.crearCuenta = (req, res) => {
         const nuevoCliente = req.body;
         const created = crearNuevoCliente(nuevoCliente);
