@@ -1,30 +1,25 @@
+{{>header}}
+
+
 <div class="container">
-    <h1>estamos en la pagina principal</h1>
-    {{#if  data.cliente.nombre }}
-    <h1>Bienvenido {{data.cliente.nombre}}</h1>
-    {{/if}}
+    <div class="jumbotron">
+        <h1 class="display-4">¡Bienvenido a Deportivos W!</h1>
+        <p class="lead">Encuentra todo lo que necesitas para tu deporte favorito.</p>
+        <a href="/productos" class="btn btn-primary btn-lg">Explorar productos</a>
+    </div>
+
+    
+
+    
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <img src="img/fondo.jpg" class="img-fluid" alt="Imagen de fondo">
+                </div>
+            </div>
+        
+        </div>
 </div>
 
-<nav>
-      <ul>
-        <li><a href="#">Hombre</a></li>
-        <li><a href="#">Mujer</a></li>
-        <li><a href="#">Niños</a></li>
-        <li><a href="#">Marcas</a></li>
-      </ul>
-</nav>
-
-<main>
-    <div class="banner">
-      <!-- Aquí colocarías el código para el banner, como imágenes, texto, etc. -->
-      <img src="" alt="Banner">
-    </div>
-    {{#if data.noLogged }}
-    <div class="container">
-      <h2>Iniciar sesión</h2>
-      <form action="/login" method="post">        
-      </form>
-      <p>¿No tienes una cuenta? <a href="/registro">Crear cuenta</a></p>
-    </div>
-    {{/if}}
-  </main>
+{{>footer}}

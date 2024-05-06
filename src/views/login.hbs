@@ -1,38 +1,52 @@
+{{>header}}
+{{>banner}}
 <div class="container">
-    <h1>estamos en la pagina login</h1>
-    
+    <h1>Iniciar Sesión</h1>
 </div>
 
+<a href="/">Inicio</a>
+<a href="/login">Iniciar Sesión</a>
+<a href="/registro">Registro</a>
+<a href="/listarc">Clientes</a>
+
 <div class="container">
-  <h2>Iniciar sesión</h2>
-  <form action="/submitLogin" method="post">
-    <div class="form-group">
-      <label for="email">Correo electrónico:</label>
-      <input type="email" class="form-control" id="email" name="email" required>
-    </div>
-    <div class="form-group">
-      <label for="password">Contraseña:</label>
-      <div class="input-group">
-        <input type="password" class="form-control" id="password" name="password" required>
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="showPassword">Mostrar contraseña</button>
+    <h2>Iniciar sesión</h2>
+    <form action="/login" method="post" onsubmit="return validarFormulario()">
+        <div class="form-group">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
         </div>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-  </form>
-  <p>¿No tienes una cuenta? <a href="/registro">Crear cuenta</a></p>
+        <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <div class="input-group">
+                <input type="password" class="form-control" id="password" name="password" required minlength="8">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="showPassword">Mostrar contraseña</button>
+                </div>
+                
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+    </form>
+    <p>¿No tienes una cuenta? <a href="/registro">Crear cuenta</a></p>
+    <p><a href="/recuperar">¿Olvidaste tu contraseña?</a></p>
 </div>
 
 <script>
-  document.getElementById('showPassword').addEventListener('click', function() {
-    var passwordField = document.getElementById('password');
-    if (passwordField.type === 'password') {
-      passwordField.type = 'text';
-      this.textContent = 'Ocultar contraseña';
-    } else {
-      passwordField.type = 'password';
-      this.textContent = 'Mostrar contraseña';
+    document.getElementById('showPassword').addEventListener('click', function () {
+        var passwordField = document.getElementById('password');
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            this.textContent = 'Ocultar contraseña';
+        } else {
+            passwordField.type = 'password';
+            this.textContent = 'Mostrar contraseña';
+        }
+    });
+
+    function validarFormulario() {
+        // Agrega aquí tu lógica de validación del formulario si es necesario
+        return true; // Devuelve true si el formulario es válido, false si no lo es
     }
-  });
 </script>
+{{>footer}}
