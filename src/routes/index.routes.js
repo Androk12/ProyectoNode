@@ -26,5 +26,14 @@ router.get('/productosnino', indexController.productos4)
 
 router.get('/carrito', indexController.carrito)
 router.post('/guardarPersonas', indexController.guardarPersonas)
+router.post('/buscarPersona', indexController.buscarPersonas)
+router.post('/actualizarPersona',indexController.actualizarPersonas)
+router.get('/editar/:cc', indexController.editarPersonas)
+router.get('/eliminar/:id', indexController.eliminarPersonas)
+router.post('/actualizarPersonas/:cc', indexController.actualizarPersonas)
+router.get('/productosTest', indexController.productosTest)
+router.get('/actualizarPersonas/',indexController.actualizarPersonas)
+
+
 
 export default router

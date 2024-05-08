@@ -1,0 +1,20 @@
+<form action="/actualizarPersonas/{{data.cc}}" method="post">
+    
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+        <input type="text" name="nombre" value="{{data.nombre}}" class="form-control" id="exampleFormControlInput1" placeholder="Nombre">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Correo</label>
+        <input type="text" name="correo" value="{{data.correo}}" class="form-control" id="exampleFormControlInput1" placeholder="Correo">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
+        <input type="text" name="contrasena" value="{{data.contrasena}}" class="form-control" id="exampleFormControlInput1"
+            placeholder="Contraseña">
+    </div>
+    <div class="modal-footer">
+        
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+</form>

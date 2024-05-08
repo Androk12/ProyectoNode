@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Subir Imagen a Firebase</title>
+    <style>
+        #photo {
+            margin-top: 200px;
+            margin-left: 450px;
+        }
+
+        #upload {
+            margin-top: 20px;
+            margin-left: 450px;
+        }
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"></script>
+</head>
+
+<body>
+    <input type="file" id="photo" accept="image/*"><br>
+    <button id="upload" onclick="uploadImage()">Subir Imagen</button>
+    <script>
+    // Configuración de Firebase
+    var firebaseConfig = {
+        apiKey: "AIzaSyAAGTis1hW-a-lBv6GyhPL5BRVqrfm2AP8",
+        authDomain: "tienda-48d92.firebaseapp.com",
+        projectId: "tienda-48d92",
+        storageBucket: "tienda-48d92.appspot.com",
+        messagingSenderId: "957389032103",
+        appId: "1:957389032103:web:a74b65189d033044592982"
+    };
+    // Inicializar Firebase  ---- No esta funcionando. 
+    firebase.initializeApp(firebaseConfig);
+
+    function uploadImage() {
+        const storageRef = firebase.storage().ref();
+        const file = document.querySelector("#photo").files[0];
+        const imageName = +new Date() + "-" + file.name;
+        const metadata = {
+            contentType: file.type
+        };
+        const task = storageRef.child('images/' + imageName).put(file, metadata);
+        task.then(snapshot => snapshot.ref.getDownloadURL())
+            .then(url => {
+                console.log(url);
+                alert('Imagen subida exitosamente');
+                // Aquí puedes hacer algo con la URL de la imagen, por ejemplo, mostrarla
+            })
+            .catch(console.error);
+    }
+</script>
+</body>
+
+</html>
