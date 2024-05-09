@@ -94,16 +94,22 @@ export default indexController;
 
     indexController.submitLogin = async (req, res) => {
         // const loginService = require("./../services/loginService");
-        const cliente = req.body;
+        const dataLogin = req.body;
     
-        const isLogged = true;
-        // if (loginService.logggedMe(cliente)) {
-        if (isLogged) {
+        if (dataLogin && dataLogin.correo != '' && dataLogin.contrasena != '' && loggedMe(dataLogin)) {
             // setea el nombre en la sesión del navegador
-            localStorage.setItem('tienda_cliente', cliente.email);
+            localStorage.setItem('tienda_cliente', dataLogin.email);
             localStorage.setItem("isLogged", true);
             res.redirect('/');
+        } else {
+            res.render('login', { messageIncorrectLogin: "Usuario o contraseña incorrecto" });
         }
+    }
+
+    async function loggedMe(dataLogin) {
+        const con = await getConnection()
+        const countClient = await con.request().query("select count(*) from Clientes c where c.correo = '" + dataLogin.email + "' and c.contrasena = '" + dataLogin.password + "'");
+        return (countClient > 0)
     }
 
     indexController.registro = (req, res) => {
