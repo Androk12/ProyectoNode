@@ -4,7 +4,12 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"></script>
 <div class="container">
     <div class="jumbotron">
+        {{#if data.noLogged }}
         <h1 class="display-4">¡Bienvenido a Deportivos W!</h1>
+        {{/if }}
+        {{#if  data.isLogged }}
+            <h1 class="display-4">¡Bienvenido {{data.cliente.nombre}}</h1>
+        {{/if }}    
         <p class="lead">Encuentra todo lo que necesitas para tu deporte favorito.</p>
         <a href="/productos" class="btn btn-primary btn-lg">Explorar productos</a>
     </div>

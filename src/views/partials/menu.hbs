@@ -1,15 +1,13 @@
-<a class="nav-link" href="/">inicio</a>
-{{#if  data.noLogged }}
-<a href="/login">ingresar</a>
-{{/if}}
-{{#if  data.isLogged }}
-<a class="nav-link" href="/logout">salir</a>
-{{/if}}
-<a class="nav-link" href="/registro">Registro</a>
-<a class="nav-link" href="/listarc">Clientes</a>
-<a class="nav-link" href="/login">
-  <i class="fas fa-user"></i> login
-</a>
 <a class="nav-link" href="/">
   <i class="fas fa-home"></i>
 </a>
+<a class="nav-link" href="/listarc">Clientes</a>
+{{#if data.noLogged }}
+<a class="nav-link" href="/login">
+  <i class="fas fa-user"></i> Login
+  <a class="nav-link" href="/registro">Registro</a>
+</a>
+{{/if}}
+{{#if data.isLogged }}
+<a class="nav-link" href="/logout">Salir</a>
+{{/if}}
