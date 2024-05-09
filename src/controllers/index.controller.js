@@ -96,20 +96,25 @@ export default indexController;
         // const loginService = require("./../services/loginService");
         const dataLogin = req.body;
     
-        if (dataLogin && dataLogin.correo != '' && dataLogin.contrasena != '' && loggedMe(dataLogin)) {
-            // setea el nombre en la sesión del navegador
-            localStorage.setItem('tienda_cliente', dataLogin.email);
-            localStorage.setItem("isLogged", true);
-            res.redirect('/');
-        } else {
-            res.render('login', { messageIncorrectLogin: "Usuario o contraseña incorrecto" });
-        }
+        const dataFilled = dataLogin && dataLogin.correo != '' && dataLogin.contrasena != '';
+        const loggedPromise = loggedMe(dataLogin);
+        
+        loggedPromise.then((isLogged) => {
+            if (dataFilled && isLogged) {
+                // setea el nombre en la sesión del navegador
+                localStorage.setItem('tienda_cliente', dataLogin.email);
+                localStorage.setItem("isLogged", true);
+                res.redirect('/');
+            } else {
+                res.render('login', { messageIncorrectLogin: "Usuario o contraseña incorrecto" });
+            }
+        });
     }
 
     async function loggedMe(dataLogin) {
         const con = await getConnection()
-        const countClient = await con.request().query("select count(*) from Clientes c where c.correo = '" + dataLogin.email + "' and c.contrasena = '" + dataLogin.password + "'");
-        return (countClient > 0)
+        const isLoggedData = await con.request().query("select count(*) from Clientes c where c.correo = '" + dataLogin.email + "' and c.contrasena = '" + dataLogin.password + "'");
+        return (parseInt(isLoggedData.recordsets[0][0]['']) > 0)
     }
 
     indexController.registro = (req, res) => {
