@@ -7,7 +7,7 @@ const indexController = {}
 
     indexController.index = (req, res) => {
         const logged = isLogged();
-        const nombreCliente = (logged) ? localStorage.getItem('tienda_cliente') : null;
+        const nombreCliente = (logged && localStorage.getItem('tienda_cliente')) ? localStorage.getItem('tienda_cliente') : null;
         res.render('index', {
             title :'Página Principal',
             data: {
