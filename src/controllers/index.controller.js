@@ -1,60 +1,13 @@
 import { getConnection } from "../models/connection"
 
-const indexController = {}
-
-    const LocalStorage = require('node-localstorage').LocalStorage,
-    localStorage = new LocalStorage('./scratch');
-
-    indexController.index = (req, res) => {
-        const logged = isLogged();
-        const nombreCliente = (logged && localStorage.getItem('tienda_cliente')) ? localStorage.getItem('tienda_cliente') : null;
-        res.render('index', {
-            title :'Página Principal',
-            data: {
-                cliente: {
-                    nombre: (nombreCliente) ? nombreCliente : null
-                },
-                noLogged: !logged,
-                isLogged: logged,
-            }
-        })
-
-    }
-
-    indexController.login = async (req, res) => {
-        res.render('login', {
-            title :'Página Login',
-        })
-
-    }
-
-    function isLogged() {
-        const isLogged = localStorage.getItem("isLogged");
-        return (isLogged != null);
-    }
-
-    indexController.logout = async (req, res) => {
-        logout();
-        res.redirect("/")
-    }
-
-    function logout() {
-        localStorage.clear();
-    }
-
-
-    /*  codigo revisar 
-    
-    import { getConnection } from "../models/connection";
+const { LocalStorage } = require('node-localstorage');
+const localStorage = new LocalStorage('./scratch');
 
 const indexController = {};
 
-const LocalStorage = require('node-localstorage').LocalStorage,
-localStorage = new LocalStorage('./scratch');
-
 indexController.index = (req, res) => {
     const logged = isLogged();
-    const nombreCliente = (logged) ? localStorage.getItem('tienda_cliente') : null;
+    const nombreCliente = (logged && localStorage.getItem('tienda_cliente')) ? localStorage.getItem('tienda_cliente') : null;
     res.render('index', {
         title: 'Página Principal',
         data: {
@@ -65,15 +18,13 @@ indexController.index = (req, res) => {
             isLogged: logged,
         }
     });
-}
+};
 
 indexController.login = async (req, res) => {
-    // Aquí debes verificar si los datos de inicio de sesión son válidos
-    // y luego establecer el indicador de inicio de sesión en localStorage
-    // Por ahora, asumamos que el inicio de sesión fue exitoso
-    localStorage.setItem('isLogged', true);
-    res.redirect('/');
-}
+    res.render('login', {
+        title: 'Página Login',
+    });
+};
 
 function isLogged() {
     const isLogged = localStorage.getItem("isLogged");
@@ -82,15 +33,15 @@ function isLogged() {
 
 indexController.logout = async (req, res) => {
     logout();
-    res.redirect("/")
-}
+    res.redirect("/");
+};
 
 function logout() {
-    localStorage.removeItem('isLogged');
+    localStorage.clear();
 }
 
-export default indexController;
- */
+module.exports = indexController;
+
 
     indexController.submitLogin = async (req, res) => {
         // const loginService = require("./../services/loginService");
@@ -249,9 +200,9 @@ export default indexController;
     indexController.editarPersonas = async (req, res)=>{
         try {
             const con = await getConnection()
-            const{cc} = req.params
-            const resultado = await con.request().query("select * from Clientes where id = '" + cc + "'")
-            res.render('editarPersona',{
+            const{id} = req.params
+            const resultado = await con.request().query("select * from Clientes where id = '" + id + "'")
+            res.render('editarPersonas',{
                 title : 'Editar Clientes',
                 data : resultado.recordset[0]
             })
@@ -264,9 +215,9 @@ export default indexController;
     indexController.actualizarPersonas = async (req, res)=>{
         try {
             const con = await getConnection()
-            const {cc} = req.params
-            const {id, nombre, correo, contrasena} = req.body
-            await con.request().query("update from Clientes set id = '"+ id +"'nombre'"+ nombre +"'correo'" + correo +"'contrasena'"+ contrasena + "' WHERE id = " + cc + "'")
+            const {id} = req.params
+            const { nombre, correo, contrasena} = req.body
+            await con.request().query("update Clientes set nombre = '" + nombre +"', correo =  '"+ correo +"', contrasena = '"+ contrasena + "' WHERE id = '" + id + "'")
             
             res.redirect('/listarc')
                 
